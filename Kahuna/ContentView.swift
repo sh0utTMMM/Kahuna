@@ -30,11 +30,6 @@ struct ContentView: View {
                     .font(.title)
                     .padding()
                 
-                Text("Temperature: \(temperature)°C")
-                    .font(.title)
-                    .foregroundColor(.blue)
-                    .padding()
-                
                 HStack {
                     Image(systemName: "magnifyingglass")
                         .padding(.leading)
@@ -52,12 +47,37 @@ struct ContentView: View {
                     ], spacing: 10) {
                         ForEach(filteredCities, id: \.id) { city in
                             NavigationLink(destination: CityView(city: city)) {
-                                VStack(alignment: .center, spacing: 5) {
+                                VStack(alignment: .leading, spacing: 5) {
+                                    
+                                    if city.id == 2747891 {
+                                        Text("Beginner")
+                                            .font(.title)
+                                            .fontWeight(.bold)
+                                            .padding(.bottom, 5.0)
+                                        
+                                    } else if city.id == 2759794 {
+                                        Text("Intermediate")
+                                            .padding(.bottom, 5.0)
+                                            .font(.title)
+                                            .fontWeight(.bold)
+                                    } else if city.id == 2744467 {
+                                        Text("Advanced")
+                                            .padding(.bottom, 5.0)
+                                            .font(.title)
+                                            .fontWeight(.bold)
+                                    } else {
+                                        Spacer()
+                                    }
+                                    
                                     Image(city.name)
                                         .resizable()
                                         .frame(maxWidth: 190, maxHeight: 120, alignment: .center)
                                         .cornerRadius(10)
+                                    HStack{
+                                        Text(city.name)
+                                    }
                                 }
+                                
                             }
                             .buttonStyle(PlainButtonStyle())
                         }
