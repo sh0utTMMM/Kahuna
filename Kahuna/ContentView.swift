@@ -2,6 +2,8 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var temperature: String = ""
+    @State private var windSpeed: String = ""
+    
     @State private var searchText: String = ""
     @State private var selectedCity: City?
     
@@ -152,6 +154,7 @@ struct ContentView: View {
                 let weatherData = try decoder.decode(WeatherData.self, from: data)
                 DispatchQueue.main.async {
                     self.temperature = "\(weatherData.main.temp)"
+                    self.windSpeed = "\(weatherData.wind.speed)"
                 }
             } catch {
                 print("Error: \(error.localizedDescription)")
@@ -171,6 +174,11 @@ struct City: Hashable {
 
 struct WeatherData: Codable {
     let main: MainData
+    let wind: WindData
+}
+
+struct WindData: Codable {
+    let speed: Double
 }
 
 struct MainData: Codable {

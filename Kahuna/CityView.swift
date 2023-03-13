@@ -10,36 +10,66 @@ import SwiftUI
 struct CityView: View {
     let city: City
     @State private var temperature: String = ""
-    
+    @State private var windSpeed: String = ""
+
     var body: some View {
         VStack {
             Text(city.name)
                 .font(.title)
                 .padding()
+
             
-            Text("Temperature: \(temperature)°C")
-                .font(.title)
-                .foregroundColor(.blue)
-                .padding()
+            Image(city.name)
+                .resizable()
+                .padding(.bottom)
+                .frame(maxWidth: 490, maxHeight: 240, alignment: .center)
+            
+            
+            HStack {
+                
+                VStack(spacing: 20) {
+                    VStack {
+                        Text("Temperature")
+                            .font(.headline)
+                        Text("\(temperature)°C")
+                            .font(.title)
+                            .foregroundColor(.blue)
+                    }
+                    .padding()
+                    .background(
+                        RoundedRectangle(cornerRadius: 20)
+                            .fill(Color.white)
+                            .shadow(color: .gray, radius: 5, x: 0, y: 2)
+                    )
+                    
+
+                    
+                    
+                    VStack {
+                        Text("Wind Speed")
+                            .font(.headline)
+                        Text("\(windSpeed) m/s")
+                            .font(.title)
+                            .foregroundColor(.blue)
+                    }
+                    .padding()
+                    .background(
+                        RoundedRectangle(cornerRadius: 20)
+                            .fill(Color.white)
+                            .shadow(color: .gray, radius: 5, x: 0, y: 2)
+                    )
+                }
+                
+                
+            }
             
             Spacer()
-        }
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                Button(action: {
-                    self.temperature = ""
-                }) {
-                    Image(systemName: "house")
-                        .font(.title)
-                }
-            }
         }
         .onAppear {
             self.fetchTemperature()
         }
     }
-    
+
     func fetchTemperature() {
         guard let url = URL(string: "https://api.openweathermap.org/data/2.5/weather?lat=\(city.latitude)&lon=\(city.longitude)&units=metric&appid=8c714448edc2ce49f32ce5608cebf590") else {
             print("Invalid URL")
@@ -61,12 +91,12 @@ struct CityView: View {
                 let weatherData = try decoder.decode(WeatherData.self, from: data)
                 DispatchQueue.main.async {
                     self.temperature = "\(weatherData.main.temp)"
+                    self.windSpeed = "\(weatherData.wind.speed)"
                 }
             } catch {
                 print("Error: \(error.localizedDescription)")
             }
         }
-
         task.resume()
     }
 }
