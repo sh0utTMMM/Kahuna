@@ -25,17 +25,19 @@ struct CityView: View {
                 .frame(maxWidth: 490, maxHeight: 240, alignment: .center)
             
             
-            HStack {
+            HStack(alignment: .top, spacing: 30) {
                 
-                VStack(spacing: 20) {
-                    VStack {
+                VStack(spacing: 30) {
+                    VStack() {
                         Text("Temperature")
-                            .font(.headline)
+                            .font(.title3)
+                            .fontWeight(.medium)
                         Text("\(temperature)°C")
                             .font(.title)
                             .foregroundColor(.blue)
                     }
                     .padding()
+                    .frame(width: 150, height: 100)
                     .background(
                         RoundedRectangle(cornerRadius: 20)
                             .fill(Color.white)
@@ -43,26 +45,92 @@ struct CityView: View {
                     )
                     
 
-                    
-                    
                     VStack {
-                        Text("Wind Speed")
-                            .font(.headline)
-                        Text("\(windSpeed) m/s")
-                            .font(.title)
+                        HStack{
+                            Text("Location")
+                                .font(.title3)
+                                .fontWeight(.medium)
+                            Image(systemName: "mappin.and.ellipse")
+                        }
+                        Text("\(city.name)")
+                            .font(.title3)
                             .foregroundColor(.blue)
                     }
                     .padding()
+                    .frame(width: 150, height: 100)
                     .background(
                         RoundedRectangle(cornerRadius: 20)
                             .fill(Color.white)
                             .shadow(color: .gray, radius: 5, x: 0, y: 2)
                     )
                 }
-                
-                
+                VStack(alignment: .leading) {
+                    HStack(){
+                        Text("Conditions")
+                            .font(.title3)
+                            .fontWeight(.semibold)
+                        Image(systemName: "cloud.fill")
+                    }
+                    .padding(.bottom)
+                    
+                    HStack{
+                        Text("Wind Speed")
+                            .font(.subheadline)
+                            .fontWeight(.semibold)
+                        Text("\(windSpeed) m/s")
+                            .font(.subheadline)
+                            .foregroundColor(.blue)
+                    }
+                    .padding(.bottom, 3.0)
+                    
+                    HStack{
+                        Text("Gust")
+                            .font(.subheadline)
+                            .fontWeight(.semibold)
+                        Text("\(windSpeed) m/s")
+                            .font(.subheadline)
+                            .foregroundColor(.blue)
+                    }
+                    
+                    .padding(.bottom, 3.0)
+                    HStack{
+                        Text("Tide")
+                            .font(.subheadline)
+                            .fontWeight(.semibold)
+                        Text("\(windSpeed) m/s")
+                            .font(.subheadline)
+                            .foregroundColor(.blue)
+                    }
+                    .padding(.bottom, 3.0)
+                    
+                    HStack{
+                        Text("Swell")
+                            .font(.subheadline)
+                            .fontWeight(.semibold)
+                        Text("\(windSpeed) m/s")
+                            .font(.subheadline)
+                            .foregroundColor(.blue)
+                    }
+                    .padding(.bottom, 3.0)
+                    
+                    HStack{
+                        Text("Something")
+                            .font(.subheadline)
+                            .fontWeight(.semibold)
+                        Text("\(windSpeed) m/s")
+                            .font(.subheadline)
+                            .foregroundColor(.blue)
+                    }
+                    .padding(.bottom, 5.0)
+                    
+                }
+                .frame(width: 180, height: 230)
+                .background(
+                    RoundedRectangle(cornerRadius: 20)
+                        .fill(Color.white)
+                        .shadow(color: .gray, radius: 5, x: 0, y: 2)
+                )
             }
-            
             Spacer()
         }
         .onAppear {
@@ -70,6 +138,12 @@ struct CityView: View {
         }
     }
 
+    
+    
+    
+    
+    
+    
     func fetchTemperature() {
         guard let url = URL(string: "https://api.openweathermap.org/data/2.5/weather?lat=\(city.latitude)&lon=\(city.longitude)&units=metric&appid=8c714448edc2ce49f32ce5608cebf590") else {
             print("Invalid URL")
