@@ -53,18 +53,10 @@ struct ContentView: View {
                         ForEach(filteredCities, id: \.id) { city in
                             NavigationLink(destination: CityView(city: city)) {
                                 VStack(alignment: .center, spacing: 5) {
-                                    Text(city.name)
-                                        .font(.headline)
-                                        .foregroundColor(selectedCity == city ? .white : .blue)
-                                        .padding()
-                                        .frame(maxWidth: .infinity, maxHeight: 200,
-                                               alignment: .center)
-                                        .background(selectedCity == city ? Color.blue : Color.white)
+                                    Image(city.name)
+                                        .resizable()
+                                        .frame(maxWidth: 190, maxHeight: 120, alignment: .center)
                                         .cornerRadius(10)
-                                        .overlay(
-                                            RoundedRectangle(cornerRadius: 10)
-                                                .stroke(selectedCity == city ? Color.blue : Color.gray.opacity(0.5), lineWidth: 2)
-                                        )
                                 }
                             }
                             .buttonStyle(PlainButtonStyle())
