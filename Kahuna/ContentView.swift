@@ -75,6 +75,7 @@ struct ContentView: View {
                                         .cornerRadius(10)
                                     HStack{
                                         Text(city.name)
+                                        Image(systemName: "figure.surfing")
                                     }
                                 }
                                 
@@ -84,7 +85,33 @@ struct ContentView: View {
                         
                     }
                     .padding(.horizontal)
+                }
+                VStack(spacing: 20) {
+                    Text("Legend")
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .frame(maxWidth: .infinity, alignment: .center)
                     
+                    HStack(spacing: 20) {
+                        VStack{
+                            Image(systemName: "figure.surfing")
+                            Text("You can surf!")
+                                .font(.headline)
+                                .foregroundColor(.gray)
+                        }
+                        VStack{
+                            Image(systemName: "water.waves.and.arrow.down.trianglebadge.exclamationmark")
+                            Text("Low tide!")
+                                .font(.headline)
+                                .foregroundColor(.gray)
+                        }
+                        VStack{
+                            Image(systemName: "water.waves.slash")
+                            Text("No  Waves!")
+                                .font(.headline)
+                                .foregroundColor(.gray)
+                        }
+                    }
                 }
             }
             
