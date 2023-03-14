@@ -13,6 +13,7 @@
 		23142CF729B93E17003DCA45 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23142CF629B93E17003DCA45 /* Preview Assets.xcassets */; };
 		23142CFF29B9582D003DCA45 /* Buienradar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23142CFE29B9582D003DCA45 /* Buienradar.swift */; };
 		23142D0129B9FDA0003DCA45 /* CityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23142D0029B9FDA0003DCA45 /* CityView.swift */; };
+		2C89DBEA29C0AE5500F99921 /* RadarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C89DBE929C0AE5500F99921 /* RadarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		23142CFD29B94BBE003DCA45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		23142CFE29B9582D003DCA45 /* Buienradar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buienradar.swift; sourceTree = "<group>"; };
 		23142D0029B9FDA0003DCA45 /* CityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityView.swift; sourceTree = "<group>"; };
+		2C89DBE929C0AE5500F99921 /* RadarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				23142CFD29B94BBE003DCA45 /* Info.plist */,
 				23142CEF29B93E16003DCA45 /* KahunaApp.swift */,
 				23142CF129B93E16003DCA45 /* ContentView.swift */,
+				2C89DBE929C0AE5500F99921 /* RadarView.swift */,
 				23142CF329B93E17003DCA45 /* Assets.xcassets */,
 				23142CF529B93E17003DCA45 /* Preview Content */,
 			);
@@ -145,6 +148,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C89DBEA29C0AE5500F99921 /* RadarView.swift in Sources */,
 				23142CF229B93E16003DCA45 /* ContentView.swift in Sources */,
 				23142D0129B9FDA0003DCA45 /* CityView.swift in Sources */,
 				23142CFF29B9582D003DCA45 /* Buienradar.swift in Sources */,

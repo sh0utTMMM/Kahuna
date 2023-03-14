@@ -179,12 +179,8 @@ struct CityView: View {
                             .shadow(color: .gray, radius: 5, x: 0, y: 2)
                     )
                 }
-                
-                Image("radarplaceholder")
-                    .resizable()
-                    .clipShape(Circle())
-                    .frame(maxWidth: 300, maxHeight: 340, alignment: .center)
                     
+                RadarView()
                 
                 Spacer()
                 
