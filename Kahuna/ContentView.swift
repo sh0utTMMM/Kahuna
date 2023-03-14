@@ -3,6 +3,8 @@ import SwiftUI
 struct ContentView: View {
     @State private var temperature: String = ""
     @State private var windSpeed: String = ""
+    @State private var humidity: String = ""
+    @State private var windGust: String = ""
     
     @State private var searchText: String = ""
     @State private var selectedCity: City?
@@ -155,6 +157,8 @@ struct ContentView: View {
                 DispatchQueue.main.async {
                     self.temperature = "\(weatherData.main.temp)"
                     self.windSpeed = "\(weatherData.wind.speed)"
+                    self.humidity = "\(weatherData.main.humidity)"
+                    self.windGust = "\(weatherData.wind.gust ?? 0.0)"
                 }
             } catch {
                 print("Error: \(error.localizedDescription)")
@@ -175,14 +179,18 @@ struct City: Hashable {
 struct WeatherData: Codable {
     let main: MainData
     let wind: WindData
+    let windGust: Double?
+}
+
+
+struct MainData: Codable {
+    let temp: Double
+    let humidity: Int
 }
 
 struct WindData: Codable {
     let speed: Double
-}
-
-struct MainData: Codable {
-    let temp: Double
+    let gust: Double?
 }
 
 struct ContentView_Previews: PreviewProvider {

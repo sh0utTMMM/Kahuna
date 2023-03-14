@@ -11,6 +11,9 @@ struct CityView: View {
     let city: City
     @State private var temperature: String = ""
     @State private var windSpeed: String = ""
+    @State private var humidity: String = ""
+    @State private var windGust: String = ""
+
 
     var body: some View {
         ScrollView {
@@ -88,7 +91,7 @@ struct CityView: View {
                             Text("Gust")
                                 .font(.subheadline)
                                 .fontWeight(.semibold)
-                            Text("\(windSpeed) m/s")
+                            Text("\(windGust) m/s")
                                 .font(.subheadline)
                                 .foregroundColor(.blue)
                         }
@@ -115,10 +118,10 @@ struct CityView: View {
                         .padding(.bottom, 3.0)
                         
                         HStack{
-                            Text("Something")
+                            Text("Humidity")
                                 .font(.subheadline)
                                 .fontWeight(.semibold)
-                            Text("\(windSpeed) m/s")
+                            Text("\(humidity) %")
                                 .font(.subheadline)
                                 .foregroundColor(.blue)
                         }
@@ -222,6 +225,9 @@ struct CityView: View {
                 DispatchQueue.main.async {
                     self.temperature = "\(weatherData.main.temp)"
                     self.windSpeed = "\(weatherData.wind.speed)"
+                    self.humidity = "\(weatherData.main.humidity)"
+                    self.windGust = "\(weatherData.wind.gust ?? 0.0)"
+                    
                 }
             } catch {
                 print("Error: \(error.localizedDescription)")
