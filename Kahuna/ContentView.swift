@@ -30,15 +30,15 @@ struct ContentView: View {
     var body: some View {
         NavigationView{
             VStack {
-                Text(selectedCity?.name ?? "Select a city")
-                    .font(.title)
-                    .padding()
-                
+                Image("black-logo2")
+                    .frame(maxWidth: 15, maxHeight: 15)
+                    .padding(.vertical, 45.0)
+                    
                 HStack {
                     Image(systemName: "magnifyingglass")
                         .padding(.leading)
                     TextField("Search cities", text: $searchText)
-                        .padding()
+                        .padding(.all, 10.0)
                 }
                 .background(Color.gray.opacity(0.2))
                 .cornerRadius(10)

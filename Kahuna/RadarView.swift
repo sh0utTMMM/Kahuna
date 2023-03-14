@@ -8,7 +8,7 @@ import SwiftUI
 
 struct RadarView: View {
     @State private var radarImage: UIImage? = nil
-    let timer = Timer.publish(every: 2, on: .main, in: .common).autoconnect()
+    let timer = Timer.publish(every: 150, on: .main, in: .common).autoconnect()
     
     var body: some View {
         VStack {
