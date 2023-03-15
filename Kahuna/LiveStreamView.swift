@@ -4,7 +4,6 @@
 //
 //  Created by Connor McClanahan on 15/03/2023.
 //
-
 import SwiftUI
 import WebKit
 
@@ -22,7 +21,9 @@ struct WebView: UIViewRepresentable {
 
 struct YoutubePlayerView: View {
     var body: some View {
-        WebView(url: URL(string: "https://www.youtube.com/embed/EHKOx5QJEj4")!)
+        WebView(url: URL(string: "https://www.youtube.com/embed/EHKOx5QJEj4?controls=1&showinfo=0")!)
             .frame(width: 560, height: 315)
     }
 }
+
+

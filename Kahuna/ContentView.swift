@@ -3,8 +3,6 @@ import SwiftUI
 
 struct ContentView: View {
     
-    
-    
     @State private var temperature: String = ""
     @State private var windSpeed: String = ""
     @State private var humidity: String = ""
@@ -22,7 +20,6 @@ struct ContentView: View {
         City(id: 2749877, name: "Middelburg", latitude: 51.5, longitude: 3.61389)
     ]
  
-    
     var filteredCities: [City] {
         if searchText.isEmpty {
             return cities
@@ -34,10 +31,9 @@ struct ContentView: View {
     var body: some View {
         NavigationView{
             VStack {
-                Image("black-logo2")
+                Image("Logo")
                     .frame(maxWidth: 40, maxHeight: 40)
                     .padding(.vertical, 20.0)
-                    
                 HStack {
                     Image(systemName: "magnifyingglass")
                         .padding(.leading)
@@ -170,6 +166,7 @@ struct ContentView: View {
                     self.humidity = "\(weatherData.main.humidity)"
                     self.windGust = "\(weatherData.wind.gust ?? 0.0)"
                 }
+                
             } catch {
                 print("Error: \(error.localizedDescription)")
             }
@@ -187,21 +184,32 @@ struct City: Hashable {
 }
 
 struct WeatherData: Codable {
-    let main: MainData
-    let wind: WindData
-    let windGust: Double?
+    let main: Main
+    let wind: Wind
+    let rain: Rain?
+    
+    struct Main: Codable {
+        let temp: Double
+        let humidity: Double
+    }
+    
+    struct Wind: Codable {
+        let speed: Double
+        let deg: Double
+        let gust: Double?
+    }
+    
+    struct Rain: Codable {
+        let oneHour: Double?
+        let threeHours: Double?
+        
+        enum CodingKeys: String, CodingKey {
+            case oneHour = "1h"
+            case threeHours = "3h"
+        }
+    }
 }
 
-
-struct MainData: Codable {
-    let temp: Double
-    let humidity: Int
-}
-
-struct WindData: Codable {
-    let speed: Double
-    let gust: Double?
-}
 
 
 struct ContentView_Previews: PreviewProvider {
