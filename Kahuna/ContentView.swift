@@ -31,9 +31,10 @@ struct ContentView: View {
     var body: some View {
         NavigationView{
             VStack {
-                Image("Logo")
-                    .frame(maxWidth: 40, maxHeight: 40)
-                    .padding(.vertical, 20.0)
+                Image("Large")
+                    .resizable()
+                    .frame(maxWidth: 200, maxHeight: 200)
+                    .padding(.vertical, -45)
                 HStack {
                     Image(systemName: "magnifyingglass")
                         .padding(.leading)
