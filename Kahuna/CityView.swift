@@ -17,17 +17,23 @@ struct CityView: View {
 
     var body: some View {
         ScrollView {
+             
             VStack {
-                Text(city.name)
-                    .font(.title)
-                    .padding()
+           
 
                 
                 Image(city.name)
                     .resizable()
-                    .padding(.bottom)
                     .frame(maxWidth: 490, maxHeight: 240, alignment: .center)
                 
+                ZStack {
+                    Rectangle()
+                        .foregroundColor(Color.white)
+                        .opacity(1)
+                        .frame(width: 440, height: 40)
+                        .cornerRadius(90)
+                }
+                .padding(.top, -20)
                 
                 HStack(alignment: .top, spacing: 30) {
                     
