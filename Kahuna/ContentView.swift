@@ -1,6 +1,10 @@
 import SwiftUI
 
+
 struct ContentView: View {
+    
+    
+    
     @State private var temperature: String = ""
     @State private var windSpeed: String = ""
     @State private var humidity: String = ""
@@ -17,7 +21,7 @@ struct ContentView: View {
         City(id: 2744467, name: "Wassenaar", latitude: 52.1483, longitude: 4.4067),
         City(id: 2749877, name: "Middelburg", latitude: 51.5, longitude: 3.61389)
     ]
-
+ 
     
     var filteredCities: [City] {
         if searchText.isEmpty {
@@ -31,8 +35,8 @@ struct ContentView: View {
         NavigationView{
             VStack {
                 Image("black-logo2")
-                    .frame(maxWidth: 15, maxHeight: 15)
-                    .padding(.vertical, 45.0)
+                    .frame(maxWidth: 40, maxHeight: 40)
+                    .padding(.vertical, 20.0)
                     
                 HStack {
                     Image(systemName: "magnifyingglass")
@@ -79,7 +83,8 @@ struct ContentView: View {
                                         .cornerRadius(10)
                                     HStack{
                                         Text(city.name)
-                                        Image(systemName: "figure.surfing")
+                                            .font(.title3)
+                                        Image("sufer")
                                     }
                                 }
                                 
@@ -98,19 +103,24 @@ struct ContentView: View {
                     
                     HStack(spacing: 20) {
                         VStack{
-                            Image(systemName: "figure.surfing")
+                            Image("sufer")
                             Text("You can surf!")
                                 .font(.headline)
                                 .foregroundColor(.gray)
                         }
                         VStack{
-                            Image(systemName: "water.waves.and.arrow.down.trianglebadge.exclamationmark")
+                            Image("Caution")
+                        
                             Text("Low tide!")
                                 .font(.headline)
                                 .foregroundColor(.gray)
+                            
                         }
                         VStack{
-                            Image(systemName: "water.waves.slash")
+                            Image("NoSurfing")
+                                .accentColor(.red)
+                                .foregroundColor(.red)
+                            
                             Text("No  Waves!")
                                 .font(.headline)
                                 .foregroundColor(.gray)
@@ -192,6 +202,7 @@ struct WindData: Codable {
     let speed: Double
     let gust: Double?
 }
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

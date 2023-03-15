@@ -6,8 +6,6 @@
 //
 
 import SwiftUI
-import WebKit
-
 
 struct CityView: View {
     let city: City
@@ -15,23 +13,26 @@ struct CityView: View {
     @State private var windSpeed: String = ""
     @State private var humidity: String = ""
     @State private var windGust: String = ""
+    @State private var waterTemp: String = ""
 
 
     var body: some View {
         ScrollView {
              
             VStack {
-                WebView(url: URL(string: "https://www.youtube.com/embed/EHKOx5QJEj4")!)
-                          .frame(width: 460, height: 315)
+                WebView(url: URL(string: "https://www.youtube.com/embed/EHKOx5QJEj4?controls=1&showinfo=0")!)
+                          .frame(width: 440, height: 315)
                 ZStack {
+                    
                     Rectangle()
                         .foregroundColor(Color.white)
                         .opacity(1)
                         .frame(width: 440, height: 40)
                         .cornerRadius(90)
+                         Image("sufer")
+
                 }
                 .padding(.top, -20)
-                
                 HStack(alignment: .top, spacing: 30) {
                     
                     VStack(spacing: 30) {
@@ -91,7 +92,7 @@ struct CityView: View {
                         .padding(.bottom, 3.0)
                         
                         HStack{
-                            Text("Gust")
+                            Text("Wave Height")
                                 .font(.subheadline)
                                 .fontWeight(.semibold)
                             Text("\(windGust) m/s")
@@ -111,10 +112,10 @@ struct CityView: View {
                         .padding(.bottom, 3.0)
                         
                         HStack{
-                            Text("Swell")
+                            Text("Water Temp")
                                 .font(.subheadline)
                                 .fontWeight(.semibold)
-                            Text("\(windSpeed) m/s")
+                            Text("\(waterTemp) °C")
                                 .font(.subheadline)
                                 .foregroundColor(.blue)
                         }
@@ -147,7 +148,7 @@ struct CityView: View {
                     
                 HStack(spacing: 50){
                     VStack() {
-                        Text("Temperature")
+                        Text("Precipitation")
                             .font(.title3)
                             .fontWeight(.medium)
                         Text("\(temperature)°C")
@@ -160,16 +161,17 @@ struct CityView: View {
                         RoundedRectangle(cornerRadius: 20)
                             .fill(Color.white)
                             .shadow(color: .gray, radius: 5, x: 0, y: 2)
+                        
                     )
-                    
-
                     VStack {
                         HStack{
-                            Text("Location")
+                            Text("Wind")
                                 .font(.title3)
                                 .fontWeight(.medium)
-                            Image(systemName: "mappin.and.ellipse")
                         }
+                        Text("Direction")
+                            .font(.title3)
+                            .fontWeight(.medium)
                         Text("\(city.name)")
                             .font(.title3)
                             .foregroundColor(.blue)
@@ -226,7 +228,7 @@ struct CityView: View {
                     self.windSpeed = "\(weatherData.wind.speed)"
                     self.humidity = "\(weatherData.main.humidity)"
                     self.windGust = "\(weatherData.wind.gust ?? 0.0)"
-                    
+                    self.waterTemp = "\(weatherData.main.temp)"
                 }
             } catch {
                 print("Error: \(error.localizedDescription)")
