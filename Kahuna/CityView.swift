@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import WebKit
+
 
 struct CityView: View {
     let city: City
@@ -19,13 +21,8 @@ struct CityView: View {
         ScrollView {
              
             VStack {
-           
-
-                
-                Image(city.name)
-                    .resizable()
-                    .frame(maxWidth: 490, maxHeight: 240, alignment: .center)
-                
+                WebView(url: URL(string: "https://www.youtube.com/embed/EHKOx5QJEj4")!)
+                          .frame(width: 460, height: 315)
                 ZStack {
                     Rectangle()
                         .foregroundColor(Color.white)
