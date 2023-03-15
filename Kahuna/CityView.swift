@@ -18,7 +18,24 @@ struct CityView: View {
     @State private var windDegree: String = ""
     @State var tideStatus = "High"
     
+    var surferImageName: String {
+        if tideStatus == "High" && Double(windSpeed) ?? 0 > 3 {
+            return "sufer"
+        } else {
+            return "Caution"
+        }
+    }
 
+    var noSurferImageName: String {
+        if tideStatus == "Low" && Double(windSpeed) ?? 0 < 1 {
+            return "NoSurfing"
+        } else {
+            return ""
+        }
+    }
+
+
+   
     var body: some View {
         ScrollView {
             VStack {
@@ -31,8 +48,9 @@ struct CityView: View {
                         .opacity(1)
                         .frame(width: 440, height: 40)
                         .cornerRadius(90)
-                         Image("sufer")
-
+                        Image(surferImageName)
+                        Image(noSurferImageName)
+                    
                 }
                 .padding(.top, -20)
                 HStack(alignment: .top, spacing: 30) {
