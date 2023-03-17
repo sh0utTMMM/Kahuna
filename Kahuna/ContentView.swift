@@ -33,8 +33,8 @@ struct ContentView: View {
             VStack {
                 Image("Large")
                     .resizable()
-                    .frame(maxWidth: 200, maxHeight: 200)
-                    .padding(.vertical, -45)
+                    .frame(maxWidth: 130, maxHeight: 130)
+                    .padding(.vertical, -35)
                 HStack {
                     Image(systemName: "magnifyingglass")
                         .padding(.leading)
