@@ -7,7 +7,7 @@ To get started, download the project and integrate it with your Swift environmen
 
 ## Demo
 A demo version of the application's features and interface is under development and will be shared soon.
-
+To check out the design try our figma! https://www.figma.com/proto/SRdvhrluzRwWizIkn3LNwG/Untitled?node-id=1-2&starting-point-node-id=1%3A2
 ## Roadmap
 Our future plan includes extending Kahuna's capabilities beyond the Netherlands, aiming to include prime surfing spots from around the world. Furthermore, we intend to enhance the user experience by integrating social features, allowing surfers to connect and share their experiences.
 
